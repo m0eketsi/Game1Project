@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D _playerRb;
-    public float speed;
-    public Animator charAnim;
+    public float jumpForce;
     public bool gotHit;
     public float lives = 3;
-    public float yPos = 0;
+    public bool Grounded = true;
+    public bool CollisionOccured = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +19,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        PlayerFly();
+        PlayerBounce();
         PlayerHit();
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
+        if(CollisionOccured)
+        return;
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            CollisionOccured = true;
+            Grounded = true;
+        }
         if (other.gameObject.CompareTag("Spike"))
         {
             lives = lives - 1;
@@ -36,11 +43,19 @@ public class PlayerController : MonoBehaviour
         {
             gotHit = false;
         }
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Grounded = false;
+            CollisionOccured = false;
+        }
     }
-    public void PlayerFly()
+    public void PlayerBounce()
     {
-        yPos = Input.GetAxis("Vertical") * speed;
-        transform.position = new Vector2(transform.position.x, yPos);
+        if (Grounded)
+        {
+        _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        }
+ 
     }
     public void PlayerHit()
     {

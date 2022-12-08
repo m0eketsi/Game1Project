@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Spike
-  - GroundBottom
-  - GroundTop
+  - Ground
   layers:
   - Default
   - TransparentFX
