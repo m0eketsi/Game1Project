@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D _playerRb;
-    public float jumpForce;
     public bool gotHit;
     public float lives = 3;
     public bool Grounded = true;
-    public bool CollisionOccured = false;
+    public float jumpForce = 100;
+    public float speed = 5;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,22 +19,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        PlayerBounce();
+        PlayerMove();
         PlayerHit();
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if(CollisionOccured)
-        return;
-        if (other.gameObject.CompareTag("Ground"))
-        {
-            CollisionOccured = true;
-            Grounded = true;
-        }
         if (other.gameObject.CompareTag("Spike"))
         {
             lives = lives - 1;
             gotHit = true;
+        }
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            Grounded = true;
         }
     }
     public void OnCollisionExit2D(Collision2D other)
@@ -46,16 +43,17 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             Grounded = false;
-            CollisionOccured = false;
         }
     }
-    public void PlayerBounce()
+    public void PlayerMove()
     {
-        if (Grounded)
+        float xPos = Input.GetAxis("Horizontal");
+        _playerRb.velocity = new Vector2(xPos * speed * Time.deltaTime, _playerRb.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.UpArrow) && Grounded)
         {
-        _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
- 
     }
     public void PlayerHit()
     {

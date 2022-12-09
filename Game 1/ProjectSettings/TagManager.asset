@@ -52,3 +52,6 @@ TagManager:
   - name: Player
     uniqueID: 2900581813
     locked: 0
+  - name: Boundary
+    uniqueID: 31691389
+    locked: 0
