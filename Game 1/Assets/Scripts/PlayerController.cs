@@ -5,11 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D _playerRb;
-    public bool gotHit;
     public float lives = 3;
     public bool Grounded = true;
     public float jumpForce = 100;
     public float speed = 5;
+    public bool CollisionHapp = false;
+    public float Timer = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,15 +22,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     { 
         PlayerMove();
-        PlayerHit();
     }
     public void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Spike"))
-        {
-            lives = lives - 1;
-            gotHit = true;
-        }
         if (other.gameObject.CompareTag("Ground"))
         {
             Grounded = true;
@@ -36,13 +32,25 @@ public class PlayerController : MonoBehaviour
     }
     public void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Spike"))
-        {
-            gotHit = false;
-        }
         if (other.gameObject.CompareTag("Ground"))
         {
             Grounded = false;
+        }
+    }
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy") && CollisionHapp == false)
+        {
+            StartCoroutine(SecondsTimer());
+            lives = lives - 1;
+            _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            _playerRb.AddForce(Vector2.right * jumpForce, ForceMode2D.Impulse);
+            CollisionHapp = true;
+        }
+        if (other.gameObject.CompareTag("Heart") /*&& lives < 3*/)
+        {
+            lives = lives + 1;
+            other.gameObject.SetActive(false);
         }
     }
     public void PlayerMove()
@@ -54,9 +62,10 @@ public class PlayerController : MonoBehaviour
         {
             _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-    }
-    public void PlayerHit()
+    } 
+    IEnumerator SecondsTimer()
     {
-
+        yield return new WaitForSeconds(Timer);
+        CollisionHapp = false;
     }
 }

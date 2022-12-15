@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Spike
   - Ground
+  - Enemy
+  - Heart
   layers:
   - Default
   - TransparentFX
@@ -54,4 +56,7 @@ TagManager:
     locked: 0
   - name: Boundary
     uniqueID: 31691389
+    locked: 0
+  - name: UI
+    uniqueID: 3723580587
     locked: 0
