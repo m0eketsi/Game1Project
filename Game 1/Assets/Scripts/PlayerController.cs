@@ -12,13 +12,13 @@ public class PlayerController : MonoBehaviour
     public bool CollisionHapp = false;
     public float Timer = 1f;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         _playerRb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
+
     void Update()
     { 
         PlayerMove();
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
             _playerRb.AddForce(Vector2.right * jumpForce, ForceMode2D.Impulse);
             CollisionHapp = true;
         }
-        if (other.gameObject.CompareTag("Heart") /*&& lives < 3*/)
+        if (other.gameObject.CompareTag("Heart"))
         {
             lives = lives + 1;
             other.gameObject.SetActive(false);
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
         float xPos = Input.GetAxis("Horizontal");
         _playerRb.velocity = new Vector2(xPos * speed * Time.deltaTime, _playerRb.velocity.y);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && Grounded)
+        if (Input.GetKeyDown(KeyCode.W) && Grounded)
         {
             _playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
