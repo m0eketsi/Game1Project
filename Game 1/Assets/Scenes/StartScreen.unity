@@ -578,14 +578,14 @@ RectTransform:
   m_GameObject: {fileID: 661309005}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9900991, y: 0.9852216, z: 1}
+  m_LocalScale: {x: 0.9900991, y: 0.7741027, z: 1}
   m_Children: []
   m_Father: {fileID: 897013418}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 423.64532}
+  m_AnchoredPosition: {x: 0, y: 480}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &661309007
@@ -890,7 +890,7 @@ RectTransform:
   m_GameObject: {fileID: 897013415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.505, y: 0.5075, z: 1}
+  m_LocalScale: {x: 0.505, y: 0.7, z: 1}
   m_Children:
   - {fileID: 1399865019}
   - {fileID: 661309006}
@@ -930,16 +930,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1027066886}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 4, z: 1}
+  m_LocalScale: {x: 1.5000001, y: 3.142857, z: 1}
   m_Children: []
   m_Father: {fileID: 897013418}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 850, y: 430}
+  m_AnchoredPosition: {x: 850.00006, y: 450}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1027066888
@@ -1488,14 +1488,14 @@ RectTransform:
   m_GameObject: {fileID: 1595313679}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9900991, y: 0.9852216, z: 1}
+  m_LocalScale: {x: 0.9900991, y: 0.7741027, z: 1}
   m_Children: []
   m_Father: {fileID: 897013418}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 24.752476, y: 246.30542}
+  m_AnchoredPosition: {x: 24.752449, y: 325}
   m_SizeDelta: {x: 1800, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1595313681
@@ -1518,9 +1518,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Roll around to avoid being captured. You start with 3 lives, however, can
-    regain them my collecting them around the map. See how long you can survive and
-    challenge a friend!
+  m_text: 'Roll around to avoid being captured. You start with 3 lives, however,
+    can regain them my collecting them around the map. See how long you can survive
+    and challenge a friend!
+
+
+    WASD to move
+
+    LEFT MOUSE to shoot'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a4e3c4501af3308438e29bb3b3b2ed74, type: 2}
   m_sharedMaterial: {fileID: -1310957557375909853, guid: a4e3c4501af3308438e29bb3b3b2ed74, type: 2}

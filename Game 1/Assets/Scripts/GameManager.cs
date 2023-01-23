@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     {
         if (controllerLives == 0)
         {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         }
     }
     public void HeartSystem()
